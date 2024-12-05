@@ -19,19 +19,10 @@ import courseRoutes from './routes/course.routes.js';
 
 import createRoutes from './routes/create.route.js';
 
-<<<<<<< HEAD
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Load environment variables
-dotenv.config();
-=======
-
 // Load environment variables
 dotenv.config();
 
 
->>>>>>> 219d0ba3d74171fedc9f01e96418c8cf3cca1a6b
 // Initialize the Express app
 
 
