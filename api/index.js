@@ -19,11 +19,17 @@ import courseRoutes from './routes/course.routes.js';
 
 import createRoutes from './routes/create.route.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 // Load environment variables
 dotenv.config();
-
 // Initialize the Express app
+
+
+// Initialize Express app
 const app = express();
+
 
 // Middleware
 app.use(express.json());
@@ -47,6 +53,7 @@ mongoose.connect(process.env.MONGO, {
   console.error('MongoDB connection error:', err);
   process.exit(1); // Exit the process if MongoDB connection fails
 });
+
 
 // Routes (make sure your routes are properly set up and imported)
 // IDE run code routes
