@@ -19,6 +19,8 @@ import courseRoutes from './routes/course.routes.js';
 
 import createRoutes from './routes/create.route.js';
 
+import path from 'path';
+
 // Load environment variables
 dotenv.config();
 
@@ -36,7 +38,7 @@ app.use(cookieParser());
 
 // Configure CORS
 app.use(cors({
-  origin: 'http://localhost:5173',  // Allow requests from your frontend domain
+  origin: process.env.FRONTEND_URL,   // Allow requests from your frontend domain
   credentials: true,                // Allow credentials like cookies, headers
 }));
 
@@ -74,6 +76,13 @@ app.use('/api/courses', courseRoutes); // Use the course routes
 
 app.use("/api/create", createRoutes);
 
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client','dist','index.html'));
+});
 
 // Global error handling middleware
 app.use((err, req, res, next) => {
